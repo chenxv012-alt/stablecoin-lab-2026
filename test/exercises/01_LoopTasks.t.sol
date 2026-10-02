@@ -39,7 +39,19 @@ contract LoopTasksTest is Test {
     ///      usdc first.
     function test_Ex2_DepositIncreasesSupplyByExactly(uint96 raw) public {
         uint256 amount = uint256(raw) % 1_000_000e6;
-        assertTrue(false, "TODO Ex2.1");
+        vm.assume(amount > 0);
+
+uint256 supplyBefore = stable.totalSupply();
+
+usdc.faucet(alice, amount);
+
+vm.startPrank(alice);
+usdc.approve(address(vault), amount);
+vault.deposit(amount);
+vm.stopPrank();
+
+uint256 supplyAfter = stable.totalSupply();
+assertEq(supplyAfter - supplyBefore, amount);
     }
 
     /// @dev Run deposit with 1000e18 instead of 1000e6, see what happens, then assert what
@@ -47,7 +59,18 @@ contract LoopTasksTest is Test {
     ///      There is no expected answer here; the point is that you run it yourself and
     ///      read the numbers.
     function test_Ex2_DecimalsTrap() public {
-        assertTrue(false, "TODO Ex2.2");
+        uint256 wrongAmount = 1000e18; // Intentionally entered with 18 decimal places
+
+usdc.faucet(alice, wrongAmount);
+
+vm.startPrank(alice);
+usdc.approve(address(vault), wrongAmount);
+vault.deposit(wrongAmount);
+vm.stopPrank();
+
+assertEq(stable.balanceOf(alice), wrongAmount);
+assertEq(stable.totalSupply(), wrongAmount);
+assertEq(vault.totalCollateral(), wrongAmount);
     }
 
     // ==================================================================
