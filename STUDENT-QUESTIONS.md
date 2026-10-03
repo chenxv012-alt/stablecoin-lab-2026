@@ -104,4 +104,5 @@ That last pair is meant to be read together: the guard is written correctly, but
 Now write one more scenario you consider **most likely to be attacked**, and say why you picked it:
 
 > Your answer:
+
 One additional attack scenario: I would test whether an attacker can grant themselves MINTER_ROLE. The existing non-minter test proves that a direct mint call is blocked, but an attacker may first try to obtain the role and then mint. My proposed test, test_Ex4_AttackerCannotGrantSelfMinterRole, would call grantRole(MINTER_ROLE, attacker) while acting as attacker and expect the precise AccessControlUnauthorizedAccount error for DEFAULT_ADMIN_ROLE. It would then confirm that the attacker still lacks MINTER_ROLE. I chose this scenario because role escalation is a route around the protection demonstrated by the direct-mint test: if the attacker gains the role, they can create unbacked sUSD and may also gain the ability to burn other users’ balances. This test cannot protect against a genuinely compromised administrator, so production would additionally need multi-signature control, monitoring, and limits on minting.
