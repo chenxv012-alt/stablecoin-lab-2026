@@ -268,3 +268,21 @@ These have no standard answers. They are the real point of this lab:
    `totalCollateral()` invariant?
 
 Question 4 is the door into next week's RWA lab.
+
+## Architecture
+
+```mermaid
+flowchart LR
+    A[Admin] -->|grants MINTER_ROLE to Vault| S[SimpleStablecoin]
+    U[User] -->|approves mUSDC| M[MockUSDC]
+    U -->|deposit or redeem| V[Vault]
+    V -->|moves mUSDC collateral| M
+    V -->|mints or burns sUSD| S
+    S -->|records user's sUSD balance| U
+```
+
+A user deposits MockUSDC through the Vault and receives sUSD.
+On redemption, the Vault burns the user's sUSD and returns MockUSDC.
+The admin grants the Vault the role needed to mint and burn.
+
+![Stablecoin architecture](Architecture.png)
