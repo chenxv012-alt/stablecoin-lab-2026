@@ -286,3 +286,13 @@ On redemption, the Vault burns the user's sUSD and returns MockUSDC.
 The admin grants the Vault the role needed to mint and burn.
 
 ![Stablecoin architecture](Architecture.png)
+
+## Sepolia deployment and verification(Tier 2)
+
+All three contracts were deployed to Sepolia and show “Source Code Verified” on Etherscan.
+
+| Contract | Address and Etherscan link |
+|---|---|
+| MockUSDC | [0x790f07f890a8B6E909A9AF44b67bC515f303080d](https://sepolia.etherscan.io/address/0x790f07f890a8b6e909a9af44b67bc515f303080d) |
+| SimpleStablecoin | [0x2d4434412074A6D7c2561F121b95C87001d20502](https://sepolia.etherscan.io/address/0x2d4434412074a6d7c2561f121b95c87001d20502) |
+| Vault | [0xdd2030E53E5d3223f98d86b872faF7Bf1E015E03](https://sepolia.etherscan.io/address/0xdd2030e53e5d3223f98d86b872faf7bf1e015e03) |

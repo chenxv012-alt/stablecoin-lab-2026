@@ -1,0 +1,13 @@
+Sepolia deployment and Etherscan verification
+
+MockUSDC
+Address: 0x790f07f890a8B6E909A9AF44b67bC515f303080d
+Link: https://sepolia.etherscan.io/address/0x790f07f890a8b6e909a9af44b67bc515f303080d
+
+SimpleStablecoin
+Address: 0x2d4434412074A6D7c2561F121b95C87001d20502
+Link: https://sepolia.etherscan.io/address/0x2d4434412074a6d7c2561f121b95c87001d20502
+
+Vault
+Address: 0xdd2030E53E5d3223f98d86b872faF7Bf1E015E03
+Link: https://sepolia.etherscan.io/address/0xdd2030e53e5d3223f98d86b872faf7bf1e015e03## Sepolia deployment and verification
